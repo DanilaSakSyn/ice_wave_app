@@ -213,7 +213,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                             ? FontWeight.bold
                             : FontWeight.w600,
                         fontSize: 16,
-                        color: isCurrentStation ? const Color(0xFF4A90A4) : const Color(0xFF6B8E9E),
+                        color: isCurrentStation
+                            ? const Color(0xFF4A90A4)
+                            : const Color(0xFF6B8E9E),
                       ),
                     ),
                     subtitle: Column(
@@ -246,7 +248,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                           ),
                         ],
                       ],
-                  ),
+                    ),
                     trailing: Container(
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
