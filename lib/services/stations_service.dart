@@ -32,64 +32,7 @@ class StationsService extends ChangeNotifier {
   bool get isLoaded => _isLoaded;
 
   // Дефолтные станции
-  List<RadioStation> get _defaultStations => [
-    RadioStation(
-      id: '1',
-      name: 'RTL - Elektro',
-      url: 'https://stream.104.6rtl.com/elektro/mp3-128',
-      icon: Icons.spa_rounded,
-      artist: 'Electronic',
-    ),
-    RadioStation(
-      id: '2',
-      name: 'Reboot Art - Free Artists',
-      url: 'https://stream.reboot.fm/listen/reboot.fm/radio.mp3',
-      icon: Icons.radio_rounded,
-      artist: 'Electronic',
-    ),
-    RadioStation(
-      id: '3',
-      name: 'FM - Chillout Lounge',
-      url: 'https://strmreg.1.fm/chilloutlounge_mobile_mp3',
-      icon: Icons.music_note_rounded,
-      artist: 'Chillout',
-    ),
-    RadioStation(
-      id: '4',
-      name: '94.5 The Buzz',
-      url: 'https://stream.revma.ihrhls.com/zc2281/hls.m3u8',
-      icon: Icons.music_note_rounded,
-      artist: 'Alternative',
-    ),
-    RadioStation(
-      id: '5',
-      name: 'The Rock FM',
-      url: 'https://live.amperwave.net/direct/midwestern-wkltfmaac-ibc1',
-      icon: Icons.music_note_rounded,
-      artist: 'Rock',
-    ),
-    RadioStation(
-      id: '6',
-      name: '95.1 K-SKY',
-      url: 'https://ice7.securenetsystems.net/KSKY',
-      icon: Icons.music_note_rounded,
-      artist: 'Rock',
-    ),
-    RadioStation(
-      id: '7',
-      name: 'Atlwebr',
-      url: 'https://usa2.fastcast4u.com/proxy/atlwebra?mp=/;',
-      icon: Icons.music_note_rounded,
-      artist: 'Rap',
-    ),
-    RadioStation(
-      id: '8',
-      name: 'Regulator R',
-      url: 'http://usa14.fastcast4u.com:5632/;',
-      icon: Icons.music_note_rounded,
-      artist: 'Rap',
-    ),
-  ];
+  List<RadioStation> get _defaultStations => [];
 
   // Загрузка станций из хранилища
   Future<void> loadStations() async {
