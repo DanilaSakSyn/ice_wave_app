@@ -75,7 +75,7 @@ desc "Sync codesigning certificates for Build"
       code_sign_identity: "Apple Distribution"
     )
     
-    # # Configure manual code signing for notification extension
+    # Configure manual code signing for notification extension
     update_code_signing_settings(
       use_automatic_signing: false,
       path: "ios/Runner.xcodeproj",
@@ -91,7 +91,7 @@ desc "Sync codesigning certificates for Build"
     
     # Get provisioning profile names from Match
     main_profile = ENV["sigh_#{ENV['IOS_BUNDLE_ID']}_appstore_profile-name"]
-    # extension_profile = ENV["sigh_#{ENV['IOS_BUNDLE_ID']}.notifications_appstore_profile-name"]
+    extension_profile = ENV["sigh_#{ENV['IOS_BUNDLE_ID']}.notifications_appstore_profile-name"]
     
     # Read, update and write ExportOptions.plist
     require 'plist'
@@ -113,8 +113,8 @@ desc "Sync codesigning certificates for Build"
 
     # Populate provisioningProfiles mapping
     export_options['provisioningProfiles'] = {
-      ENV['IOS_BUNDLE_ID'] => main_profile
-      # "#{ENV['IOS_BUNDLE_ID']}.notifications" => extension_profile
+      ENV['IOS_BUNDLE_ID'] => main_profile,
+      "#{ENV['IOS_BUNDLE_ID']}.notifications" => extension_profile
     }
 
     File.write(export_options_path, export_options.to_plist)

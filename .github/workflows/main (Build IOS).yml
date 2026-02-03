@@ -1,8 +1,7 @@
 name: Build Flutter iOS
 
-# on: workflow_dispatch
-on:
-  push
+
+on: workflow_dispatch
 
 
 
@@ -42,6 +41,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
+         
           channel: 'stable'
           cache: true
       
@@ -181,7 +181,6 @@ jobs:
           APPLE_CONNECT_EMAIL: ${{ secrets.APPLE_CONNECT_EMAIL }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
           IOS_BUNDLE_ID: ${{ secrets.IOS_BUNDLE_ID }}
-          # APP_VERSION: ${{ secrets.APP_VERSION }}
           APPSTORE_KEY_ID: ${{ secrets.APPSTORE_KEY_ID }}
           APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
           # Provide raw .p8 content to Fastlane lanes that expect APPSTORE_P8 (some lanes use :key_content)

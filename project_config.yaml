@@ -17,7 +17,7 @@ icon_path: "Icon.png"
 team_id: ""
 
 # Версия приложения
-app_version: "1.0.0"
+app_version: "1.0.1"
 
 # Номер сборки
 build_number: "1"
