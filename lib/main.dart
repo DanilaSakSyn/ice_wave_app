@@ -2,8 +2,6 @@ import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
-import 'package:ice_wave_app/core/screens/no_internet_connection.dart';
-import 'package:ice_wave_app/core/screens/push_request_screen.dart';
 import 'package:ice_wave_app/firebase_options.dart';
 import 'package:ice_wave_app/services/audio_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -67,7 +65,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CupertinoApp(
       debugShowCheckedModeBanner: false,
-      home: NoInternetConnectionScreen(),
+      home: SplashScreen(),
     );
   }
 }
