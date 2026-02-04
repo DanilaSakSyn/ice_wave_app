@@ -7,7 +7,7 @@ import 'package:ice_wave_app/services/audio_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/services/sdk_initializer.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'core/screens/splash_screen.dart';
 
 late RadioAudioHandler audioHandler;
@@ -63,7 +63,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CupertinoApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
     );
