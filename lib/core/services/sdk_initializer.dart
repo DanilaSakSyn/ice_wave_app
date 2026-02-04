@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io' show Platform;
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:appsflyer_sdk/appsflyer_sdk.dart';
@@ -209,8 +210,8 @@ class SdkInitializer {
   static Future<void> _firebaseMessagingBackgroundHandler(
     RemoteMessage message,
   ) async {
+    print("push url" + message.data['url']);
     SdkInitializer.pushURL = message.data['url'];
-    WebViewScreen.LoadFromPush(message.data['url']);
   }
 
   static void _onMessageOpenedApp(RemoteMessage message) {
@@ -220,7 +221,7 @@ class SdkInitializer {
       );
     }
     SdkInitializer.pushURL = message.data['url'];
-
+    EventBus.instance.fire(message.data['url']);
     // TODO: Add navigation or specific handling based on message data
   }
 
@@ -676,5 +677,30 @@ Future<Map<String, dynamic>?> sendPostRequest({
       print('Ошибка запроса: $e');
     }
     return null;
+  }
+}
+
+class EventBus {
+  // Контроллер для событий
+  final _controller = StreamController<dynamic>.broadcast();
+
+  // Singleton instance
+  static final EventBus instance = EventBus();
+
+  // Приватный конструктор (если хотите запретить создание экземпляров)
+  // EventBus._(); // или просто не объявляйте public конструктор
+
+  // Поток событий
+  Stream<dynamic> get events => _controller.stream;
+
+  // Отправка события
+  void fire(dynamic event) {
+    print(event);
+    _controller.add(event);
+  }
+
+  // Закрытие
+  void dispose() {
+    _controller.close();
   }
 }

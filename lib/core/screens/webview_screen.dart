@@ -9,15 +9,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class WebViewScreen extends StatefulWidget {
   final String initialUrl;
-  static PlatformWebViewController controller = WebKitWebViewController.new(
-    PlatformWebViewControllerCreationParams.new(),
-  );
 
   const WebViewScreen({super.key, this.initialUrl = 'https://flutter.dev'});
-
-  static void LoadFromPush(String url) {
-    controller.loadRequest(LoadRequestParams(uri: Uri.parse(url)));
-  }
 
   @override
   State<WebViewScreen> createState() => _WebViewScreenState();
@@ -156,7 +149,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
       }
     });
   ''');
-                  WebViewScreen.controller = controller;
+                  // WebViewScreen.controller = controller;
                   isLoading = false;
                   currentUrl = url;
                 });
@@ -228,7 +221,10 @@ class _WebViewScreenState extends State<WebViewScreen> {
               LoadRequestParams(uri: Uri.parse(urlToLoad)),
             );
           });
-
+    EventBus.instance.events.listen((event) {
+      print(event);
+      controller.loadRequest(LoadRequestParams(uri: Uri.parse(event)));
+    });
     //controller.getSettings().setMediaPlaybackRequiresUserGesture(false);
 
     // Создаем контроллер WebView
